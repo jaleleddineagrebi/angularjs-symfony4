@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container" ng-controller="MyCtrl">
+<p>jalel testing css</p>
+<div >
+<h1 id="red">[[name]]</h1>
+</div>
+
+
+<div class="row">
+<div class="col-lg-12">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat="liv in livre">
+      <td>[[liv.titre]]</td>
+      <td>[[liv.description]]</td>
+      <td>[[liv.paye]]</td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+myApp.controller('MyCtrl',function($scope,$http){
+$scope.name="sihem";
+$http.get('http://localhost/my_project/public/index.php/first').then(function(response){
+$scope.livre=response.data;
+})
+
+})
+</script>
+{% endblock %}

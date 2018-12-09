@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+        <script src="../assets/js/angular.min.js"></script>
+        <script src="../assets/js/angular-sanitize.min.js"></script>
+        <link rel="stylesheet" href="../assets/app.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body ng-app="myApp">
+        {% block body %}{% endblock %}
+
+
+        <script>
+        var myApp = angular.module('myApp', ['ngSanitize']);
+        myApp.config( function($interpolateProvider) {
+          $interpolateProvider.startSymbol('[[');
+          $interpolateProvider.endSymbol(']]');
+      });
+
+    </script>
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>
